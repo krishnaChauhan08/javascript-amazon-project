@@ -1,9 +1,9 @@
 //                   1----> save the data
-// array represent the list
-// object represent the product 
 //                   2----> generate the html by looping
-//                          combine the hrml together using 34 line
-//                          put it on the web page usiung dom
+//                              combine the html together using 34 line
+//                              put it on the web page usiung dom
+//                   3----> make it interactive through line 70 
+
 
 let productsHTML = '';
 
@@ -49,18 +49,43 @@ products.forEach((products) => {
           <div class="product-spacer"></div>
 
           <div class="added-to-cart">
-            <img src="images/icons/checkmark.png">
-            Added
+             <img src="images/icons/checkmark.png">
+             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
-            Add to Cart
+          <button class="add-to-cart-button button-primary js-add-to-cart" 
+           data-product-id = "${products.id}">
+             Add to Cart
           </button>
         </div>
     `
-})
+});
 
-console.log(productsHTML);
 
 document.querySelector('.js-products-grid')
     .innerHTML = productsHTML
+
+document.querySelectorAll('.js-add-to-cart')
+    .forEach((button) => {
+        button.addEventListener('click',() => {
+            const productId = button.dataset.productId;
+            
+            let matchingItem;
+            cart.forEach((item) => {
+                if(productId===item.productId){
+                    matchingItem = item;
+                }
+            });
+
+            if(matchingItem){
+                matchingItem.quantity += 1;
+            }else{
+                cart.push({
+                    productId: productId,
+                    quantity: 1
+                })
+            }
+
+            console.log(cart)
+        });
+    });   
