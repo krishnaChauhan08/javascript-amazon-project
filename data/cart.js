@@ -1,4 +1,4 @@
-export const cart = [{
+export let cart = [{
     productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
     quantity: 2
 }, {
@@ -21,6 +21,27 @@ export function addToCart(productId) {
         cart.push({
             productId: productId,
             quantity: 1
-        })
+        });
     }
   }
+
+
+// when we click delete button 
+// step a : remove the product from the cart
+// step b : update the html
+
+// steps to remove the product from the cart
+// 1. create a new array
+// 2. loop through the cart 
+// 3. add each product to new array, except for this product  
+  export function removeFromCart(productId) {
+    const newCart = [];
+
+    cart.forEach((cartItem) => {
+        if(cartItem.productId !== productId){
+            newCart.push(cartItem);
+        }
+    });
+
+    cart = newCart;
+}
