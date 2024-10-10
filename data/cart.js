@@ -34,6 +34,10 @@ export function addToCart(productId) {
 // 1. create a new array
 // 2. loop through the cart 
 // 3. add each product to new array, except for this product  
+
+// steps to update the html
+// 1. use the dom to get the element to remove 
+// 2. use .remove() method
   export function removeFromCart(productId) {
     const newCart = [];
 
