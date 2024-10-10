@@ -4,7 +4,8 @@
 //                              put it on the web page usiung dom
 //                   3----> make it interactive through line 70 
 
-import {cart } from '../data/cart.js';
+import { cart } from '../data/cart.js';
+import { products } from '../data/products.js';
 
 let productsHTML = '';
 
